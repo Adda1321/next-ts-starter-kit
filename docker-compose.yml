@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  # Next.js web application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Expose Next.js app on host
+    volumes:
+      - .:/app # Mount code for live reload in dev
+      - /app/node_modules # Persist node_modules in container
+    env_file:
+      - .env.${APP_MODE:-development} # Load environment variables
+    environment:
+      - NODE_ENV=development
+      - APP_MODE=${APP_MODE:-development}
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+    depends_on:
+      - db
+    restart: always
+
+  # PostgreSQL database
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432" # Expose DB on 5433 to avoid local conflicts
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Persist DB data
+
+volumes:
+  pgdata: 

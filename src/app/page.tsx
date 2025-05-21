@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -82,7 +85,9 @@ export default function Home() {
         <section>
           <h2 className="text-xl font-semibold mb-2">Notable Projects</h2>
           <div className="mb-4">
-            <div className="font-bold">MinuteMaster – Full-Stack Development (Next.ts | Prisma | GraphQL)</div>
+            <div className="font-bold">
+              <Link href="/projects/minutemaster" className="text-primary hover:underline">MinuteMaster – Full-Stack Development (Next.ts | Prisma | GraphQL)</Link>
+            </div>
             <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 pl-4">
               <li>Integrated OpenAI-based document generation, automating meeting summaries and transcriptions.</li>
               <li>Developed role-based access controls, ensuring secure user and admin permissions.</li>
@@ -93,7 +98,9 @@ export default function Home() {
             </ul>
           </div>
           <div className="mb-4">
-            <div className="font-bold">CorkCRM – Full-Stack Development (React.js | ROR)</div>
+            <div className="font-bold">
+              <Link href="/projects/corkcrm" className="text-primary hover:underline">CorkCRM – Full-Stack Development (React.js | ROR)</Link>
+            </div>
             <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 pl-4">
               <li>Engineered seamless payment integrations, enhancing the CRM's monetization capabilities.</li>
               <li>Developed high-performance, reusable UI components to optimize the user experience.</li>
@@ -101,7 +108,9 @@ export default function Home() {
             </ul>
           </div>
           <div>
-            <div className="font-bold">BeatTheGym – Mobile App & Admin Portal (React Native | Firebase)</div>
+            <div className="font-bold">
+              <Link href="/projects/beatthegym" className="text-primary hover:underline">BeatTheGym – Mobile App & Admin Portal (React Native | Firebase)</Link>
+            </div>
             <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 pl-4">
               <li>Designed and developed a mobile app with pixel-perfect UI for both Android and iOS.</li>
               <li>Implemented real-time chat, push notifications, and live updates, improving user engagement.</li>

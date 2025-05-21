@@ -1,0 +1,15 @@
+1. webhook
+2. websocket
+3. postgres sql with prisma as an ORM and GraphQL
+4. check on DBvear
+5. check once server actions
+6. for storage use S3
+7. for demo purpose use EC2
+8. use LAmda function
+9. deployment
+Auth simle
+Auth0
+
+
+-----------------------------------------------------
+1. separate postgres db in docker so that i can use my local instead of 
