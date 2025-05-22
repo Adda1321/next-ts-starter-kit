@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col items-center px-4 sm:px-8">
+    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col items-center px-4 sm:px-8 bg-red-50! " id="OKKKKKK">
       {/* Header */}
       <header className="w-full max-w-3xl flex flex-col items-center gap-2 pt-12 pb-6 border-b border-gray-200 dark:border-gray-800">
         <Image
