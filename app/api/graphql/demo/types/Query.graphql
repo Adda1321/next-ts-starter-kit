@@ -1,9 +1,0 @@
-type Query {
-  getDemo(id: ID!): Demo
-}
-
-type Demo {
-  id: ID!
-  title: String!
-  description: String
-} 
