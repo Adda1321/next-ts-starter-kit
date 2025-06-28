@@ -23,17 +23,17 @@ model User {
 
 // Project belonging to a user
 model Project {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  imageUrl    String?
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  imageUrl     String?
   technologies String[]
-  githubUrl   String?
-  liveUrl     String?
-  user        User     @relation(fields: [userId], references: [id])
-  userId      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  githubUrl    String?
+  liveUrl      String?
+  user         User     @relation(fields: [userId], references: [id])
+  userId       String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 // Contact message sent to the portfolio owner
@@ -43,4 +43,43 @@ model Contact {
   email     String
   message   String
   createdAt DateTime @default(now())
-} 
+}
+
+// Webhook subscription for external services
+model WebhookSubscription {
+  id            String         @id @default(cuid())
+  name          String // Human-readable name for the webhook
+  url           String // The URL to send webhook to
+  secret        String // Secret key for webhook signature
+  events        String[] // Array of event types this webhook listens to
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  webhookEvents WebhookEvent[] // Relation to webhook events
+}
+
+// Webhook event log
+model WebhookEvent {
+  id             String              @id @default(cuid())
+  eventType      String // Type of event (e.g., "contact.created", "project.created")
+  payload        Json // The data that was sent in the webhook
+  status         WebhookEventStatus  @default(PENDING)
+  responseCode   Int? // HTTP response code from webhook delivery
+  responseBody   String? // Response body from webhook delivery
+  retryCount     Int                 @default(0)
+  maxRetries     Int                 @default(3)
+  nextRetryAt    DateTime?
+  deliveredAt    DateTime?
+  subscription   WebhookSubscription @relation(fields: [subscriptionId], references: [id])
+  subscriptionId String
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+}
+
+// Enum for webhook event status
+enum WebhookEventStatus {
+  PENDING
+  DELIVERED
+  FAILED
+  RETRYING
+}

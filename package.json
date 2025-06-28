@@ -15,31 +15,28 @@
     "@apollo/experimental-nextjs-app-support": "^0.10.1",
     "@apollo/server": "^4.10.4",
     "@as-integrations/next": "^3.0.0",
-    "concurrently": "^8.2.2",
-    "uuid": "^11.1.0",
-
-
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.14",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^7.0.1",
-    "@parcel/watcher": "^2.4.1",
     "@mui/material": "^7.0.1",
     "@mui/x-data-grid": "^7.28.3",
     "@mui/x-date-pickers": "^7.28.3",
+    "@parcel/watcher": "^2.4.1",
     "@prisma/client": "^5.10.2",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
+    "concurrently": "^8.2.2",
     "graphql": "^16.8.1",
     "graphql-scalars": "^1.23.0",
-    
     "next": "15.1.8",
     "node-cache": "^5.1.2",
     "p-retry": "^6.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.51.0",
+    "uuid": "^11.1.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -56,5 +53,6 @@
     "prisma": "^5.14.0",
     "tailwindcss": "^4.1.8",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.3.1+sha512.af78262d7d125afbfeed740602ace8c5e4405cd7f4735c08feb327286b2fdb2390fbca01589bfd1f50b1240548b74806767f5a063c94b67e431aabd0d86f7774"
 }

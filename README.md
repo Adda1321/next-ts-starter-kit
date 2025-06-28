@@ -48,12 +48,22 @@ The project uses two environments:
 
 ```
 my-portfolio/
-├── src/                # Source code
-├── public/            # Static files
-├── .env.development   # Development settings
-├── .env.production    # Production settings
-├── Dockerfile         # Docker configuration
-└── docker-compose.yml # Docker setup
+├── app/                    # Next.js app directory
+│   ├── api/v1/            # API endpoints
+│   │   ├── contact/       # Contact form API
+│   │   ├── webhooks/      # Webhook management API
+│   │   └── webhook-receiver/ # Test webhook receiver
+│   ├── contact/           # Contact form page
+│   └── webhooks/          # Webhook dashboard
+├── src/
+│   └── services/          # Business logic
+│       └── webhookService.ts # Webhook implementation
+├── prisma/                # Database schema and migrations
+├── public/                # Static files
+├── .env.development       # Development settings
+├── .env.production        # Production settings
+├── Dockerfile             # Docker configuration
+└── docker-compose.yml     # Docker setup
 ```
 
 ## Learn More
@@ -62,6 +72,7 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Webhook System Documentation](README_WEBHOOK.md) - comprehensive guide to the webhook implementation.
 
 ## Deploy on Vercel
 
@@ -108,13 +119,13 @@ npx prisma migrate dev --name init
 # Format Prisma schema
 npx prisma format
 
-# Seed the database (if seed.ts is set up)
+# Seed the database
 npx prisma db seed
 ```
 
 ### Seeding the Database
 - The seed script does **not** run automatically.
-- New developers (or CI) should run it **manually** after running migrations:
+- New developers should run it **manually** after running migrations:
 
 ```bash
 npx prisma db seed
