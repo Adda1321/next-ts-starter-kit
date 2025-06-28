@@ -55,7 +55,6 @@ export default function ContactPage() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
         console.log('✅ Contact form submitted successfully! Webhook event triggered.');
       } else {
         setSubmitStatus('error');
@@ -72,15 +71,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-background text-foreground">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="w-full max-w-xl bg-white dark:bg-gray-900 rounded-lg shadow p-8">
-        <h1 className="text-2xl font-bold mb-6">Contact Me</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Contact Me</h1>
         
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2">
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Name *
             </label>
             <input
@@ -90,14 +89,14 @@ export default function ContactPage() {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-gray-400 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               placeholder="Your name"
             />
           </div>
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Email *
             </label>
             <input
@@ -107,14 +106,14 @@ export default function ContactPage() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-gray-400 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               placeholder="your.email@example.com"
             />
           </div>
 
           {/* Message Field */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2">
+            <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Message *
             </label>
             <textarea
@@ -124,7 +123,7 @@ export default function ContactPage() {
               onChange={handleInputChange}
               required
               rows={5}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 resize-none"
+              className="w-full px-3 py-2 border border-gray-400 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"
               placeholder="Your message..."
             />
           </div>
@@ -141,39 +140,39 @@ export default function ContactPage() {
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900 border border-green-400 text-green-700 dark:text-green-300 rounded-md">
+          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900 border border-green-400 text-green-900 dark:text-green-100 rounded-md">
             ✅ Message sent successfully! I'll get back to you soon.
           </div>
         )}
 
         {submitStatus === 'error' && (
-          <div className="mt-4 p-3 bg-red-100 dark:bg-red-900 border border-red-400 text-red-700 dark:text-red-300 rounded-md">
+          <div className="mt-4 p-3 bg-red-100 dark:bg-red-900 border border-red-400 text-red-900 dark:text-red-100 rounded-md">
             ❌ {errorMessage}
           </div>
         )}
 
         {/* Webhook Info */}
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
-          <h3 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
+          <h3 className="text-sm font-medium text-blue-900 dark:text-blue-200 mb-2">
             🔔 Webhook Integration
           </h3>
-          <p className="text-xs text-blue-600 dark:text-blue-400">
+          <p className="text-xs text-blue-900 dark:text-blue-200">
             When you submit this form, it triggers a webhook event that can notify external services 
             (like Slack, email services, or CRM systems) about new contact messages in real-time.
           </p>
         </div>
 
         {/* Alternative Contact Info */}
-        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <h3 className="text-sm font-medium mb-2">Other Ways to Reach Me</h3>
-          <div className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
-            <div>📧 Email: <a href="mailto:adilmustafa13@gmail.com" className="text-blue-600 hover:underline">adilmustafa13@gmail.com</a></div>
+        <div className="mt-6 pt-6 border-t border-gray-300 dark:border-gray-700">
+          <h3 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Other Ways to Reach Me</h3>
+          <div className="text-sm text-gray-900 dark:text-gray-100 space-y-1">
+            <div>📧 Email: <a href="mailto:adilmustafa13@gmail.com" className="text-blue-700 dark:text-blue-300 hover:underline">adilmustafa13@gmail.com</a></div>
             <div>📱 Phone: +92 303 5103015</div>
-            <div>💼 LinkedIn: <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">adil-mustafa1325</a></div>
+            <div>💼 LinkedIn: <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-700 dark:text-blue-300 hover:underline">adil-mustafa1325</a></div>
           </div>
         </div>
 
-        <Link href="/" className="block mt-6 text-blue-600 hover:underline text-center">
+        <Link href="/" className="block mt-6 text-blue-700 dark:text-blue-300 hover:underline text-center">
           &larr; Back to Portfolio
         </Link>
       </div>

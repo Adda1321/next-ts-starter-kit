@@ -11,6 +11,7 @@ const prisma = new PrismaClient();
  * This endpoint handles contact form submissions:
  * - POST: Submit a new contact message
  * - Triggers webhook events for contact.created
+ * - Emits WebSocket notifications for real-time updates
  */
 export async function POST(request: NextRequest) {
   try {
@@ -55,6 +56,38 @@ export async function POST(request: NextRequest) {
     } catch (webhookError) {
       console.error('Failed to trigger webhook for contact.created:', webhookError);
       // Don't fail the contact creation if webhook fails
+    }
+
+    // Emit WebSocket notification for real-time updates
+    try {
+      // Import socket.io dynamically to avoid SSR issues
+      const { Server } = await import('socket.io');
+      
+      // Get the socket server instance from the global scope
+      const io = (global as any).socketIO;
+      
+      if (io) {
+        const notification = {
+          type: 'contact_created',
+          data: {
+            id: contact.id,
+            name: contact.name,
+            email: contact.email,
+            message: contact.message,
+            createdAt: contact.createdAt,
+          },
+          timestamp: new Date().toISOString(),
+          id: contact.id // Use DB id for uniqueness
+        };
+
+        // Emit to admin room only (not all clients)
+        io.to('admin_room').emit('contact_notification', notification);
+        
+        console.log('📢 WebSocket notification emitted for new contact');
+      }
+    } catch (socketError) {
+      console.error('Failed to emit WebSocket notification:', socketError);
+      // Don't fail the contact creation if WebSocket fails
     }
 
     return NextResponse.json(
