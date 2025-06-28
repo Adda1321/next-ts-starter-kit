@@ -12,27 +12,33 @@ datasource db {
 
 // User of the portfolio (owner)
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String    @id @default(cuid())
   name      String
-  email     String   @unique
+  email     String    @unique
+  password  String
   projects  Project[]
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 // Project belonging to a user
 model Project {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(cuid())
   title       String
   description String
-  url         String?
+  imageUrl    String?
+  technologies String[]
+  githubUrl   String?
+  liveUrl     String?
   user        User     @relation(fields: [userId], references: [id])
-  userId      Int
+  userId      String
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 // Contact message sent to the portfolio owner
 model Contact {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   name      String
   email     String
   message   String

@@ -1,0 +1,33 @@
+type Project {
+  id: ID!
+  title: String!
+  description: String!
+  imageUrl: String
+  technologies: [String!]!
+  githubUrl: String
+  liveUrl: String
+  userId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateProjectInput {
+  title: String!
+  description: String!
+  imageUrl: String
+  technologies: [String!]!
+  githubUrl: String
+  liveUrl: String
+}
+
+input UpdateProjectInput {
+  title: String
+  description: String
+  imageUrl: String
+  technologies: [String!]
+  githubUrl: String
+  liveUrl: String
+}
+
+
+
