@@ -2,8 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "../src/stores/userStore";
 
 export default function Home() {
+  const { isAuthenticated } = useUserStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.replace('/signin');
+    }
+  }, [isAuthenticated, router]);
+
+  if (!isAuthenticated) return null;
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col items-center px-4 sm:px-8 bg-red-50! " id="OKKKKKK">
       {/* Header */}
