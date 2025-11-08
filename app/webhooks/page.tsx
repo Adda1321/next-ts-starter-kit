@@ -295,26 +295,6 @@ export default function WebhookDashboard() {
           </div>
         )}
 
-        {/* Webhook Info */}
-        <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-300 mb-3">
-            🔔 How Webhooks Work
-          </h3>
-          <div className="text-sm text-blue-700 dark:text-blue-400 space-y-2">
-            <p>
-              <strong>1. Event Trigger:</strong> When someone submits the contact form, a "contact.created" event is triggered.
-            </p>
-            <p>
-              <strong>2. Webhook Delivery:</strong> The system sends HTTP POST requests to all active webhook subscriptions that listen to this event type.
-            </p>
-            <p>
-              <strong>3. Retry Logic:</strong> If delivery fails, the system automatically retries with exponential backoff up to 3 times.
-            </p>
-            <p>
-              <strong>4. Security:</strong> Each webhook includes an HMAC signature in the X-Webhook-Signature header for verification.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

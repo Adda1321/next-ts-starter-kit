@@ -209,16 +209,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Instructions */}
-        <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-yellow-800 mb-2">🧪 Testing Instructions</h3>
-          <div className="text-sm text-yellow-700 space-y-1">
-            <p>1. Keep this admin dashboard open in one browser tab</p>
-            <p>2. Open the contact form in another tab: <Link href="/contact" className="underline">/contact</Link></p>
-            <p>3. Submit a contact form and watch for real-time notifications here!</p>
-            <p>4. No page refresh needed - notifications appear instantly</p>
-          </div>
-        </div>
+        
       </div>
     </div>
   );
