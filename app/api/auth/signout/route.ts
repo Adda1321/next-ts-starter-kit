@@ -1,7 +1,7 @@
+import { removeAuthCookieInResponse } from '@/lib/auth';
 import { NextRequest, NextResponse } from 'next/server';
-import { removeAuthCookie } from '@/src/lib/auth';
 
 export async function POST(request: NextRequest) {
-  removeAuthCookie();
-  return NextResponse.json({ success: true });
+  const response = NextResponse.json({ success: true });
+  return removeAuthCookieInResponse(response);
 } 

@@ -4,17 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useUserStore } from "../src/stores/userStore";
+import { useAuth } from "../src/hooks/useAuth";
 
 export default function Home() {
-  const { isAuthenticated } = useUserStore();
+  const { isAuthenticated, isLoading, logout, user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       router.replace('/signin');
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, isLoading, router]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) return null;
 
@@ -148,6 +156,16 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full max-w-3xl py-6 border-t border-gray-200 dark:border-gray-800 text-center text-xs text-gray-400 mt-8">
         &copy; {new Date().getFullYear()} Adil Mustafa. All rights reserved.
+        {user && (
+          <div className="mt-4">
+            <button
+              onClick={logout}
+              className="text-red-600 dark:text-red-400 hover:underline"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </footer>
     </div>
   );
