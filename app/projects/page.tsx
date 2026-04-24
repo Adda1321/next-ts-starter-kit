@@ -20,23 +20,25 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 py-12 bg-background text-foreground">
-      <div className="w-full max-w-2xl">
+    <div className="min-h-screen bg-slate-100 text-slate-900">
+      <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-8">
+      <div className="w-full max-w-3xl">
         <h1 className="text-2xl font-bold mb-6">Projects</h1>
         <ul className="space-y-6">
           {projects.map((project) => (
-            <li key={project.id} className="bg-white dark:bg-gray-900 rounded-lg shadow p-6">
-              <Link href={`/projects/${project.id}`} className="text-xl font-semibold text-primary hover:underline">
+            <li key={project.id} className="rounded-lg border border-slate-300 bg-white p-6 shadow-sm">
+              <Link href={`/projects/${project.id}`} className="text-xl font-semibold text-blue-700 hover:underline">
                 {project.name}
               </Link>
-              <p className="text-gray-700 dark:text-gray-300 mt-2">{project.description}</p>
+              <p className="text-slate-700 mt-2">{project.description}</p>
             </li>
           ))}
         </ul>
         <div className="mt-8">
-          <Link href="/" className="text-primary hover:underline">&larr; Back to Portfolio</Link>
+          <Link href="/" className="text-blue-700 hover:underline">&larr; Back to Portfolio</Link>
+        </div>
         </div>
       </div>
     </div>
   );
-} 
+}

@@ -22,21 +22,19 @@ const projects = {
   },
 };
 
-// Define the props type explicitly
 type ProjectDetailProps = {
-  params: Promise<{ id: string }>; // params is a Promise in Next.js App Router
+  params: { id: string };
 };
 
-// Server component, not static
-export default async function ProjectDetail({ params }: ProjectDetailProps) {
-  const resolvedParams = await params; // Resolve the Promise to get the actual params
-  const project = projects[resolvedParams.id as keyof typeof projects];
+export default function ProjectDetail({ params }: ProjectDetailProps) {
+  const project = projects[params.id as keyof typeof projects];
   if (!project) return notFound();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-background text-foreground">
-      <div className="w-full max-w-xl bg-white dark:bg-gray-900 rounded-lg shadow p-8">
+    <div className="min-h-screen bg-slate-100 text-slate-900">
+      <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-8">
+      <div className="w-full max-w-3xl rounded-lg border border-slate-300 bg-white p-8 shadow-sm">
         <h1 className="text-2xl font-bold mb-2">{project.name}</h1>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">{project.description}</p>
+        <p className="mb-4 text-slate-700">{project.description}</p>
         <div className="mb-4">
           <span className="font-semibold">Tech Stack:</span>
           <ul className="list-disc list-inside ml-4">
@@ -45,10 +43,11 @@ export default async function ProjectDetail({ params }: ProjectDetailProps) {
             ))}
           </ul>
         </div>
-        <div className="mb-6 text-gray-600 dark:text-gray-400">{project.details}</div>
-        <Link href="/" className="text-primary hover:underline">
+        <div className="mb-6 text-slate-700">{project.details}</div>
+        <Link href="/" className="text-blue-700 hover:underline">
           ← Back to Portfolio
         </Link>
+      </div>
       </div>
     </div>
   );
