@@ -124,13 +124,13 @@ export default function WebhookDashboard() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-1 mb-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex space-x-1 mb-6 border-b border-gray-300 dark:border-gray-700">
           <button
             onClick={() => setActiveTab('events')}
             className={`px-4 py-2 font-medium rounded-t-lg transition-colors ${
               activeTab === 'events'
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                : 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700'
             }`}
           >
             Events ({events.length})
@@ -140,7 +140,7 @@ export default function WebhookDashboard() {
             className={`px-4 py-2 font-medium rounded-t-lg transition-colors ${
               activeTab === 'subscriptions'
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                : 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700'
             }`}
           >
             Subscriptions ({subscriptions.length})
@@ -164,29 +164,29 @@ export default function WebhookDashboard() {
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-50 dark:bg-gray-800">
+                  <thead className="bg-gray-100 dark:bg-gray-800">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Event
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Status
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Subscription
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Created
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Retries
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-300 dark:divide-gray-700">
                     {events.map((event) => (
                       <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
                           <div className="text-sm font-medium">{event.eventType}</div>
                           <div className="text-xs text-slate-600 dark:text-slate-300">
                             ID: {event.id}
@@ -235,37 +235,37 @@ export default function WebhookDashboard() {
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-50 dark:bg-gray-800">
+                  <thead className="bg-gray-100 dark:bg-gray-800">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Name
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         URL
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Events
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Status
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                         Created
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-300 dark:divide-gray-700">
                     {subscriptions.map((subscription) => (
                       <tr key={subscription.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
                           <div className="text-sm font-medium">{subscription.name}</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
                           <div className="text-sm text-gray-900 dark:text-gray-100">
                             {subscription.url}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
                           <div className="flex flex-wrap gap-1">
                             {subscription.events.map((event: string) => (
                               <span
@@ -298,26 +298,6 @@ export default function WebhookDashboard() {
           </div>
         )}
 
-        {/* Webhook Info */}
-        <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-300 mb-3">
-            🔔 How Webhooks Work
-          </h3>
-          <div className="text-sm text-blue-700 dark:text-blue-400 space-y-2">
-            <p>
-              <strong>1. Event Trigger:</strong> When someone submits the contact form, a "contact.created" event is triggered.
-            </p>
-            <p>
-              <strong>2. Webhook Delivery:</strong> The system sends HTTP POST requests to all active webhook subscriptions that listen to this event type.
-            </p>
-            <p>
-              <strong>3. Retry Logic:</strong> If delivery fails, the system automatically retries with exponential backoff up to 3 times.
-            </p>
-            <p>
-              <strong>4. Security:</strong> Each webhook includes an HMAC signature in the X-Webhook-Signature header for verification.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -1,143 +1,149 @@
 # My Portfolio
-## for ReadMe.md preview use ctrl+shift+V
 
+This is a [Next.js](https://nextjs.org) project with Webhooks, WebSockets, and Database features.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 📋 Quick Start
 
-## Getting Started with Docker
+### Option 1: Run Database in Docker, App Locally (Recommended)
 
-1. **First Time Setup:**
-   ```bash
-   # Copy environment file
-   cp .env.example .env.development
+**1. Start Database:**
+```bash
+docker compose up
+```
 
-   # Build and start the app
-   docker-compose up --build
-   ```
+**2. Setup Database:**
+```bash
+# Apply migrations
+DATABASE_URL=postgresql://postgres:techclan@localhost:5433/mydb npx prisma migrate deploy
 
-2. **Regular Development:**
-   ```bash
-   # Start the app
-   docker-compose up
-   ```
+# Generate Prisma client
+npx prisma generate
+```
 
-3. **Stop the App:**
-   ```bash
-   docker-compose down
-   ```
+**3. Start App:**
+```bash
+npm install
+npm run dev
+```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**4. Open Browser:**
+- App: http://localhost:3000
+- Prisma Studio: `npx prisma studio` (then open http://localhost:5555)
 
-## Environment Setup
+### Option 2: Run Everything in Docker
 
-The project uses two environments:
+**1. First Time Setup:**
+```bash
+# Copy environment file
+cp .env.example .env.development
 
-1. **Development** (default)
-   - For local development
-   - Shows detailed error messages
-   - Hot reloading enabled
-   - Run with: `docker-compose up`
+# Build and start
+docker compose up --build
+```
 
-2. **Production**
-   - For live deployment
-   - Optimized performance
-   - Minimal error messages
-   - Run with: `NODE_ENV=production docker-compose up`
+**2. Regular Development:**
+```bash
+docker compose up
+```
 
-## Project Structure
+**3. Stop:**
+```bash
+docker compose down
+```
+
+## 🌿 Git Branches
+
+This project has multiple feature branches:
+
+- **`main`** - Main production branch
+- **`webhook`** - Webhook system implementation
+- **`web-socket`** - WebSocket real-time notifications
+- **`login-system`** - Authentication and login features
+- **`basic-graphql-prisma-folder-structure-next`** - Basic setup with GraphQL
+
+**Switch branches:**
+```bash
+git checkout webhook
+git checkout web-socket
+git checkout login-system
+```
+
+## 🗄️ Database Setup
+
+### Database Connection
+
+**From your host machine (when app runs locally):**
+```
+Host: localhost
+Port: 5433
+User: postgres
+Password: techclan
+Database: mydb
+```
+
+**Connection String:**
+```env
+DATABASE_URL=postgresql://postgres:techclan@localhost:5433/mydb
+```
+
+### Common Database Commands
+
+```bash
+# Open Prisma Studio (web UI)
+DATABASE_URL=postgresql://postgres:techclan@localhost:5433/mydb npx prisma studio
+
+# Generate Prisma client
+npx prisma generate
+
+# Run migrations
+DATABASE_URL=postgresql://postgres:techclan@localhost:5433/mydb npx prisma migrate deploy
+
+# Seed database (optional)
+DATABASE_URL=postgresql://postgres:techclan@localhost:5433/mydb npx prisma db seed
+```
+
+## 📁 Project Structure
 
 ```
 my-portfolio/
-├── app/                    # Next.js app directory
+├── app/                    # Next.js pages and API routes
 │   ├── api/v1/            # API endpoints
 │   │   ├── contact/       # Contact form API
-│   │   ├── webhooks/      # Webhook management API
+│   │   ├── webhooks/      # Webhook management
 │   │   └── webhook-receiver/ # Test webhook receiver
+│   ├── admin/             # Admin dashboard (WebSocket)
 │   ├── contact/           # Contact form page
 │   └── webhooks/          # Webhook dashboard
 ├── src/
-│   └── services/          # Business logic
-│       └── webhookService.ts # Webhook implementation
+│   ├── hooks/             # React hooks (useSocket)
+│   └── services/          # Business logic (webhookService)
 ├── prisma/                # Database schema and migrations
-├── public/                # Static files
-├── .env.development       # Development settings
-├── .env.production        # Production settings
-├── Dockerfile             # Docker configuration
-└── docker-compose.yml     # Docker setup
+├── lib/                   # Socket server setup
+└── server.js              # Custom Next.js server (for WebSocket)
 ```
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- ✅ **Contact Form** - Submit contact messages
+- ✅ **Webhooks** - Send notifications to external services (Slack, Discord, etc.)
+- ✅ **WebSocket** - Real-time notifications on admin dashboard
+- ✅ **Database** - PostgreSQL with Prisma ORM
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Webhook System Documentation](README_WEBHOOK.md) - comprehensive guide to the webhook implementation.
+## 📚 Documentation
 
-## Deploy on Vercel
+- [Webhook Guide](README_WEBHOOK.md) - How to use webhooks
+- [WebSocket Guide](README_WEBSOCKET.md) - How to use WebSocket
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create `.env` or `.env.development`:
 
-## Prisma & Database Setup
-
-This project uses [Prisma ORM](https://www.prisma.io/) with PostgreSQL. The database runs in Docker Compose.
-
-### Environment Variable for Database
-- **Inside Docker Compose:**
-  - `DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb`
-- **From Host Machine:**
-  - `DATABASE_URL=postgresql://postgres:postgres@localhost:5433/mydb`
-
-### Database Port Note
-- The PostgreSQL database is exposed on port **5433** (not 5432) to avoid conflicts with local installations.
-- When connecting from your host (e.g., DBeaver, TablePlus), use:
-  - **Host:** localhost
-  - **Port:** 5433
-  - **User:** postgres
-  - **Password:** postgres
-  - **Database:** mydb
-- For Prisma CLI from host, use:
-  - `DATABASE_URL=postgresql://postgres:postgres@localhost:5433/mydb`
-- For Docker Compose and app code, use:
-  - `DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb`
-
-> Use `db` as the host when running inside Docker containers. Use `localhost` when running Prisma CLI from your host.
-
-### Common Prisma CLI Commands
-```bash
-# Open Prisma Studio (web UI for DB)
-npx prisma studio
-
-# Generate Prisma client
-yarn prisma generate # or npx prisma generate
-
-# Run migrations (dev)
-npx prisma migrate dev --name init
-
-# Format Prisma schema
-npx prisma format
-
-# Seed the database
-npx prisma db seed
+```env
+DATABASE_URL=postgresql://postgres:techclan@localhost:5433/mydb
 ```
 
-### Seeding the Database
-- The seed script does **not** run automatically.
-- New developers should run it **manually** after running migrations:
+## 📖 Learn More
 
-```bash
-npx prisma db seed
-```
-
-- This will populate the database with initial test data (users, projects, contacts).
-- You can customize the seed data in `prisma/seed.ts`.
-
-> **Note:** The seed script is typically run after `npx prisma migrate dev` or when you want to reset/test your database with sample data.
-
-### Advanced Patterns
-- For advanced connection management, see `src/db.ts` and `prisma/seed.ts` for patterns like:
-  - Prisma client singleton
-  - Safe disconnect on exit
-  - Retry logic for transient errors
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [Socket.io Documentation](https://socket.io/docs)

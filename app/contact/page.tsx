@@ -55,7 +55,6 @@ export default function ContactPage() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
         console.log('✅ Contact form submitted successfully! Webhook event triggered.');
       } else {
         setSubmitStatus('error');
@@ -80,7 +79,7 @@ export default function ContactPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2">
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Name *
             </label>
             <input
@@ -97,7 +96,7 @@ export default function ContactPage() {
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Email *
             </label>
             <input
@@ -114,7 +113,7 @@ export default function ContactPage() {
 
           {/* Message Field */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2">
+            <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Message *
             </label>
             <textarea
@@ -141,23 +140,23 @@ export default function ContactPage() {
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900 border border-green-400 text-green-700 dark:text-green-300 rounded-md">
+          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900 border border-green-400 text-green-900 dark:text-green-100 rounded-md">
             ✅ Message sent successfully! I'll get back to you soon.
           </div>
         )}
 
         {submitStatus === 'error' && (
-          <div className="mt-4 p-3 bg-red-100 dark:bg-red-900 border border-red-400 text-red-700 dark:text-red-300 rounded-md">
+          <div className="mt-4 p-3 bg-red-100 dark:bg-red-900 border border-red-400 text-red-900 dark:text-red-100 rounded-md">
             ❌ {errorMessage}
           </div>
         )}
 
         {/* Webhook Info */}
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
-          <h3 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
+          <h3 className="text-sm font-medium text-blue-900 dark:text-blue-200 mb-2">
             🔔 Webhook Integration
           </h3>
-          <p className="text-xs text-blue-600 dark:text-blue-400">
+          <p className="text-xs text-blue-900 dark:text-blue-200">
             When you submit this form, it triggers a webhook event that can notify external services 
             (like Slack, email services, or CRM systems) about new contact messages in real-time.
           </p>
