@@ -9,6 +9,7 @@ import { useUserStore } from '../stores/userStore';
  */
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUser = useUserStore((state) => state.setUser);
+  const setAuthInitialized = useUserStore((state) => state.setAuthInitialized);
 
   useEffect(() => {
     // Check for existing session on mount
@@ -28,11 +29,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch (error) {
         console.error('Auth initialization failed:', error);
         setUser(null);
+      } finally {
+        setAuthInitialized(true);
       }
     }
 
     initAuth();
-  }, [setUser]);
+  }, [setAuthInitialized, setUser]);
 
   return <>{children}</>;
 }

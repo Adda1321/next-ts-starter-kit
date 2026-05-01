@@ -1,17 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getTokenFromRequest, verifyJWT } from './src/lib/auth';
-
-// Public routes that don't require authentication
-const publicRoutes = ['/signin', '/signup', '/api/auth/signin', '/api/auth/signup'];
+import { getTokenFromRequest } from './src/lib/auth';
 
 // Protected routes that require authentication
 const protectedRoutes = ['/admin'];
-
-// Check if a path matches any of the given patterns
-function isPublicRoute(pathname: string): boolean {
-  return publicRoutes.some(route => pathname.startsWith(route));
-}
 
 function isProtectedRoute(pathname: string): boolean {
   return protectedRoutes.some(route => pathname.startsWith(route));
@@ -20,15 +12,10 @@ function isProtectedRoute(pathname: string): boolean {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Allow public routes
-  if (isPublicRoute(pathname)) {
-    return NextResponse.next();
-  }
-
-  // Check authentication for protected routes
+  // Only admin routes require authentication.
   if (isProtectedRoute(pathname)) {
-    const token = getTokenFromRequest(request);
-    
+    const token = request.cookies.get('auth_token')?.value || getTokenFromRequest(request);
+
     if (!token) {
       // Redirect to signin if not authenticated
       const signinUrl = new URL('/signin', request.url);
@@ -36,21 +23,11 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(signinUrl);
     }
 
-    // Verify JWT token
-    const payload = verifyJWT(token);
-    
-    if (!payload) {
-      // Invalid token, redirect to signin
-      const signinUrl = new URL('/signin', request.url);
-      signinUrl.searchParams.set('redirect', pathname);
-      return NextResponse.redirect(signinUrl);
-    }
-
-    // Token is valid, allow access
+    // Auth cookie exists, allow access.
     return NextResponse.next();
   }
 
-  // For all other routes, allow access (they can check auth client-side)
+  // All non-admin routes are public.
   return NextResponse.next();
 }
 

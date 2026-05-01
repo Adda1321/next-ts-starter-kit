@@ -11,16 +11,18 @@ export default function SigninPage() {
   const [showPassword, setShowPassword] = useState(false);
   const setUser = useUserStore((s) => s.setUser);
   const isAuthenticated = useUserStore((s) => s.isAuthenticated);
+  const isAuthInitialized = useUserStore((s) => s.isAuthInitialized);
   const router = useRouter();
   const searchParams = useSearchParams();
 
   // Redirect if already authenticated
   useEffect(() => {
+    if (!isAuthInitialized) return;
     if (isAuthenticated) {
       const redirect = searchParams.get('redirect') || '/';
       router.push(redirect);
     }
-  }, [isAuthenticated, router, searchParams]);
+  }, [isAuthInitialized, isAuthenticated, router, searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -54,7 +56,7 @@ export default function SigninPage() {
     }
   };
 
-  if (isAuthenticated) {
+  if (!isAuthInitialized || isAuthenticated) {
     return null; // Will redirect via useEffect
   }
 
