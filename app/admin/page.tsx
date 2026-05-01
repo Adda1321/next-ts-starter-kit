@@ -69,27 +69,27 @@ export default function AdminDashboard() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'connected':
-        return 'text-green-600 bg-green-100';
+        return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300';
       case 'connecting':
-        return 'text-yellow-600 bg-yellow-100';
+        return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300';
       case 'disconnected':
-        return 'text-red-600 bg-red-100';
+        return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300';
       case 'error':
-        return 'text-red-600 bg-red-100';
+        return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300';
       default:
-        return 'text-gray-600 bg-gray-100';
+        return 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-slate-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-slate-50 p-4 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <div className="mb-6 rounded-lg bg-white p-6 shadow-sm dark:bg-slate-900">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">🔔 Admin Dashboard</h1>
-              <p className="text-gray-600 mt-2">Real-time contact notifications</p>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-100">🔔 Admin Dashboard</h1>
+              <p className="mt-2 text-gray-600 dark:text-slate-300">Real-time contact notifications</p>
             </div>
             <div className="flex items-center space-x-4">
               {/* Connection Status */}
@@ -97,14 +97,14 @@ export default function AdminDashboard() {
                 <div className={`w-3 h-3 rounded-full ${
                   isConnected ? 'bg-green-500' : 'bg-red-500'
                 }`}></div>
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(connectionStatus)}`}>
+                <span className={`rounded-full px-3 py-1 text-sm font-medium ${getStatusColor(connectionStatus)}`}>
                   {connectionStatus}
                 </span>
               </div>
               
               {/* Client ID */}
               {clientId && (
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-500 dark:text-slate-400">
                   ID: {clientId.slice(0, 8)}...
                 </div>
               )}
@@ -121,8 +121,8 @@ export default function AdminDashboard() {
         </div>
 
         {/* Connection Info */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <h3 className="text-lg font-semibold text-blue-800 mb-2">🔌 WebSocket Connection</h3>
+        <div className="mb-6 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
+          <h3 className="mb-2 text-lg font-semibold text-blue-800 dark:text-blue-300">🔌 WebSocket Connection</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div>
               <span className="font-medium">Status:</span> {connectionStatus}
@@ -137,12 +137,12 @@ export default function AdminDashboard() {
         </div>
 
         {/* Notifications */}
-        <div className="bg-white rounded-lg shadow-sm">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">
+        <div className="rounded-lg bg-white shadow-sm dark:bg-slate-900">
+          <div className="border-b border-gray-200 p-6 dark:border-slate-700">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100">
               📢 Live Contact Notifications
             </h2>
-            <p className="text-gray-600 mt-1">
+            <p className="mt-1 text-gray-600 dark:text-slate-300">
               Real-time updates when someone submits the contact form
             </p>
           </div>
@@ -151,8 +151,8 @@ export default function AdminDashboard() {
             {notifications.length === 0 ? (
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">📭</div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No notifications yet</h3>
-                <p className="text-gray-600">
+                <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">No notifications yet</h3>
+                <p className="text-gray-600 dark:text-slate-300">
                   Submit a contact form to see real-time notifications here!
                 </p>
                 <div className="mt-4">
@@ -169,36 +169,36 @@ export default function AdminDashboard() {
                 {notifications.map((notification) => (
                   <div 
                     key={notification.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                    className="rounded-lg border border-gray-200 p-4 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-slate-800"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <div className="flex items-center space-x-2">
                         <span className="text-2xl">👤</span>
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-gray-900 dark:text-slate-100">
                           New Contact: {notification.data.name}
                         </h3>
                       </div>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-gray-500 dark:text-slate-400">
                         {formatTimestamp(notification.timestamp)}
                       </span>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                       <div>
-                        <span className="font-medium text-gray-700">Email:</span>
-                        <div className="text-gray-900">{notification.data.email}</div>
+                        <span className="font-medium text-gray-700 dark:text-slate-300">Email:</span>
+                        <div className="text-gray-900 dark:text-slate-100">{notification.data.email}</div>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">Time:</span>
-                        <div className="text-gray-900">
+                        <span className="font-medium text-gray-700 dark:text-slate-300">Time:</span>
+                        <div className="text-gray-900 dark:text-slate-100">
                           {formatTimestamp(notification.data.createdAt)}
                         </div>
                       </div>
                     </div>
                     
                     <div className="mt-3">
-                      <span className="font-medium text-gray-700">Message:</span>
-                      <div className="text-gray-900 mt-1 p-3 bg-gray-50 rounded border">
+                      <span className="font-medium text-gray-700 dark:text-slate-300">Message:</span>
+                      <div className="mt-1 rounded border bg-gray-50 p-3 text-gray-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100">
                         {notification.data.message}
                       </div>
                     </div>

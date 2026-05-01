@@ -36,9 +36,9 @@ export function SiteNav() {
   };
 
   return (
-    <header className="w-full border-b border-slate-300 bg-white">
+    <header className="w-full border-b border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-900">
       <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-4 sm:px-8">
-        <Link href="/" className="text-lg font-bold text-slate-900">
+        <Link href="/" className="text-lg font-bold text-slate-900 dark:text-slate-100">
           Adil Mustafa
         </Link>
         <nav className="flex items-center gap-5">
@@ -46,32 +46,32 @@ export function SiteNav() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-slate-700 transition hover:text-blue-700"
+              className="text-sm font-semibold text-slate-700 transition hover:text-blue-700 dark:text-slate-200 dark:hover:text-blue-300"
             >
               {item.label}
             </Link>
           ))}
           {!isAuthInitialized ? (
-            <span className="text-xs font-semibold text-slate-500">Checking session...</span>
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Checking session...</span>
           ) : isAuthenticated ? (
             <>
-              <span className="text-xs font-semibold text-emerald-700">
+              <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
                 Signed in{user?.name ? ` as ${user.name}` : ""}
               </span>
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="rounded border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+                className="rounded border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:text-slate-100"
               >
                 Sign out
               </button>
             </>
           ) : (
             <>
-              <span className="text-xs font-semibold text-amber-700">Signed out</span>
+              <span className="text-xs font-semibold text-amber-700 dark:text-amber-400">Signed out</span>
               <Link
                 href="/signin"
-                className="rounded border border-blue-700 px-3 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-50"
+                className="rounded border border-blue-700 px-3 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-50 dark:border-blue-400 dark:text-blue-300 dark:hover:bg-slate-800"
               >
                 Sign in
               </Link>

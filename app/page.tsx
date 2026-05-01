@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900">
+    <div className="min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 sm:px-8">
-      <header className="w-full max-w-3xl flex flex-col items-center gap-2 pt-10 pb-6 border-b border-slate-300">
+      <header className="w-full max-w-3xl flex flex-col items-center gap-2 border-b border-slate-300 pt-10 pb-6 dark:border-slate-700">
         <Image
           src="/profile-placeholder.png"
           alt="Adil Mustafa profile photo"
@@ -14,13 +14,13 @@ export default function Home() {
           className="rounded-full border-4 border-blue-700 mb-2"
         />
         <h1 className="text-3xl font-bold tracking-tight">Adil Mustafa</h1>
-        <p className="text-sm text-slate-700">Johar Town, Lahore</p>
+        <p className="text-sm text-slate-700 dark:text-slate-300">Johar Town, Lahore</p>
         <div className="flex gap-4 mt-2">
-          <a href="mailto:adilmustafa13@gmail.com" className="hover:underline text-blue-700">adilmustafa13@gmail.com</a>
-          <span className="text-slate-500">|</span>
-          <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-700">LinkedIn</a>
+          <a href="mailto:adilmustafa13@gmail.com" className="text-blue-700 hover:underline dark:text-blue-300">adilmustafa13@gmail.com</a>
+          <span className="text-slate-500 dark:text-slate-400">|</span>
+          <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline dark:text-blue-300">LinkedIn</a>
         </div>
-        <div className="text-xs text-slate-700 mt-1">+92 303 5103015</div>
+        <div className="mt-1 text-xs text-slate-700 dark:text-slate-300">+92 303 5103015</div>
       </header>
 
       {/* Main Content */}
@@ -28,7 +28,7 @@ export default function Home() {
         {/* About Me */}
         <section>
           <h2 className="text-xl font-semibold mb-2">About Me</h2>
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Results-driven Software Engineer with 3+ years of experience in full-stack development. Proven track record of delivering high-performance, scalable solutions for startups and established businesses. Passionate about clean code, user-centric design, and seamless user experiences.
           </p>
         </section>
@@ -36,7 +36,7 @@ export default function Home() {
         {/* Technical Skills */}
         <section>
           <h2 className="text-xl font-semibold mb-2">Technical Skills</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
+          <ul className="grid grid-cols-1 gap-2 text-slate-700 dark:text-slate-300 sm:grid-cols-2">
             <li><span className="font-bold">Frontend:</span> React.js | NEXT.ts | ReactNative | MUI | Tailwind | Capacitor.js</li>
             <li><span className="font-bold">Backend:</span> GraphQL | Prisma | Node.js | Ruby | PostgreSQL | Mongo DB | Puppeteer.js</li>
             <li><span className="font-bold">Tools:</span> Git, Docker, Datadog, Sentry, Jira, Linux</li>
@@ -46,7 +46,7 @@ export default function Home() {
         {/* Education */}
         <section>
           <h2 className="text-xl font-semibold mb-2">Education</h2>
-          <div className="text-slate-700">
+          <div className="text-slate-700 dark:text-slate-300">
             <div className="font-bold">B.Sc. Electrical Engineering</div>
             <div>FAST Lahore (2017-2021)</div>
           </div>
@@ -57,7 +57,7 @@ export default function Home() {
           <h2 className="text-xl font-semibold mb-2">Professional Experience</h2>
           <div className="mb-4">
             <div className="font-bold">Software Engineer – TechClan (06/2022 – Present)</div>
-            <ul className="list-disc list-inside text-slate-700 pl-4">
+            <ul className="list-inside list-disc pl-4 text-slate-700 dark:text-slate-300">
               <li>Developed and deployed high-performance web applications, CRMs, and eCommerce platforms with scalable architectures.</li>
               <li>Built pixel-perfect, responsive UIs, ensuring cross-browser compatibility and a seamless user experience.</li>
               <li>Integrated third-party services, including authentication systems, payment gateways, and advanced text editors.</li>
@@ -70,7 +70,7 @@ export default function Home() {
           </div>
           <div>
             <div className="font-bold">Associate Software Engineer – TxLabz (11/2021 – 05/2022)</div>
-            <ul className="list-disc list-inside text-slate-700 pl-4">
+            <ul className="list-inside list-disc pl-4 text-slate-700 dark:text-slate-300">
               <li>Developed cross-platform mobile applications using React Native for both iOS and Android.</li>
               <li>Built UI components to enhance reusability and optimize performance across different devices.</li>
               <li>Integrated Firebase for real-time updates, authentication, and cloud-based storage.</li>
@@ -84,9 +84,9 @@ export default function Home() {
           <h2 className="text-xl font-semibold mb-2">Notable Projects</h2>
           <div className="mb-4">
             <div className="font-bold">
-              <Link href="/projects/minutemaster" className="text-blue-700 hover:underline">MinuteMaster – Full-Stack Development (Next.ts | Prisma | GraphQL)</Link>
+              <Link href="/projects/minutemaster" className="text-blue-700 hover:underline dark:text-blue-300">MinuteMaster – Full-Stack Development (Next.ts | Prisma | GraphQL)</Link>
             </div>
-            <ul className="list-disc list-inside text-slate-700 pl-4">
+            <ul className="list-inside list-disc pl-4 text-slate-700 dark:text-slate-300">
               <li>Integrated OpenAI-based document generation, automating meeting summaries and transcriptions.</li>
               <li>Developed role-based access controls, ensuring secure user and admin permissions.</li>
               <li>Built an advanced document editor with editing, signing, and export functionalities, supporting both PDF and Word formats.</li>
@@ -97,9 +97,9 @@ export default function Home() {
           </div>
           <div className="mb-4">
             <div className="font-bold">
-              <Link href="/projects/corkcrm" className="text-blue-700 hover:underline">CorkCRM – Full-Stack Development (React.js | ROR)</Link>
+              <Link href="/projects/corkcrm" className="text-blue-700 hover:underline dark:text-blue-300">CorkCRM – Full-Stack Development (React.js | ROR)</Link>
             </div>
-            <ul className="list-disc list-inside text-slate-700 pl-4">
+            <ul className="list-inside list-disc pl-4 text-slate-700 dark:text-slate-300">
               <li>Engineered seamless payment integrations, enhancing the CRM's monetization capabilities.</li>
               <li>Developed high-performance, reusable UI components to optimize the user experience.</li>
               <li>Led the development team, ensuring code quality through rigorous pull request (PR) reviews.</li>
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
           <div>
             <div className="font-bold">
-              <Link href="/projects/beatthegym" className="text-blue-700 hover:underline">BeatTheGym – Mobile App & Admin Portal (React Native | Firebase)</Link>
+              <Link href="/projects/beatthegym" className="text-blue-700 hover:underline dark:text-blue-300">BeatTheGym – Mobile App & Admin Portal (React Native | Firebase)</Link>
             </div>
             <ul className="list-disc list-inside text-slate-700 pl-4">
               <li>Designed and developed a mobile app with pixel-perfect UI for both Android and iOS.</li>
@@ -121,15 +121,15 @@ export default function Home() {
         {/* Contact */}
         <section>
           <h2 className="text-xl font-semibold mb-2">Contact</h2>
-          <div className="text-slate-700">
-            <div>Email: <a href="mailto:adilmustafa13@gmail.com" className="text-blue-700 hover:underline">adilmustafa13@gmail.com</a></div>
+          <div className="text-slate-700 dark:text-slate-300">
+            <div>Email: <a href="mailto:adilmustafa13@gmail.com" className="text-blue-700 hover:underline dark:text-blue-300">adilmustafa13@gmail.com</a></div>
             <div>Phone: +92 303 5103015</div>
-            <div>LinkedIn: <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">adil-mustafa1325</a></div>
+            <div>LinkedIn: <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline dark:text-blue-300">adil-mustafa1325</a></div>
           </div>
         </section>
       </main>
 
-      <footer className="w-full max-w-3xl py-6 border-t border-slate-300 text-center text-xs text-slate-600 mt-8">
+      <footer className="mt-8 w-full max-w-3xl border-t border-slate-300 py-6 text-center text-xs text-slate-600 dark:border-slate-700 dark:text-slate-400">
         &copy; {new Date().getFullYear()} Adil Mustafa. All rights reserved.
       </footer>
       </div>

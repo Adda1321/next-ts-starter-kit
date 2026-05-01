@@ -35,10 +35,10 @@ const demos = [
 
 export default function LearnPage() {
   return (
-    <main className="min-h-screen bg-slate-100 px-4 py-10 text-slate-900 sm:px-8">
+    <main className="min-h-screen bg-slate-100 px-4 py-10 text-slate-900 dark:bg-slate-950 dark:text-slate-100 sm:px-8">
       <div className="mx-auto w-full max-w-4xl">
         <h1 className="mb-3 text-3xl font-bold">Next.js Rendering Playground</h1>
-        <p className="mb-8 text-slate-700">
+        <p className="mb-8 text-slate-700 dark:text-slate-300">
           Use these pages to understand Server Components, SSR, Client Components,
           CSR-only rendering, SSG, and hydration behavior in App Router.
         </p>
@@ -48,10 +48,10 @@ export default function LearnPage() {
             <Link
               key={demo.href}
               href={demo.href}
-              className="rounded-lg border border-slate-300 bg-white p-5 shadow-sm transition hover:border-blue-400"
+              className="rounded-lg border border-slate-300 bg-white p-5 shadow-sm transition hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-blue-500"
             >
-              <h2 className="text-lg font-semibold text-blue-700">{demo.title}</h2>
-              <p className="mt-2 text-sm text-slate-700">{demo.description}</p>
+              <h2 className="text-lg font-semibold text-blue-700 dark:text-blue-300">{demo.title}</h2>
+              <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{demo.description}</p>
             </Link>
           ))}
         </div>

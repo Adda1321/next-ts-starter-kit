@@ -61,8 +61,8 @@ export default function SigninPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white dark:bg-gray-900 rounded-lg shadow p-8 space-y-6">
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4 text-gray-900 dark:bg-slate-950 dark:text-gray-100">
+      <form onSubmit={handleSubmit} className="w-full max-w-md space-y-6 rounded-lg border border-slate-300 bg-white p-8 shadow dark:border-slate-700 dark:bg-slate-900">
         <h1 className="text-2xl font-bold mb-2 text-center">Sign In</h1>
         <div>
           <label htmlFor="email" className="block mb-1 font-medium">Email</label>
