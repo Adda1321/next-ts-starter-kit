@@ -71,9 +71,9 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <div className="w-full max-w-xl bg-white dark:bg-gray-900 rounded-lg shadow p-8">
-        <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Contact Me</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+      <div className="w-full max-w-xl bg-white dark:bg-slate-900 rounded-lg shadow p-8 border border-slate-200 dark:border-slate-700">
+        <h1 className="text-2xl font-bold mb-6">Contact Me</h1>
         
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -89,7 +89,7 @@ export default function ContactPage() {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-400 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-900 placeholder:text-slate-500 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-300"
               placeholder="Your name"
             />
           </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-400 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-900 placeholder:text-slate-500 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-300"
               placeholder="your.email@example.com"
             />
           </div>
@@ -123,7 +123,7 @@ export default function ContactPage() {
               onChange={handleInputChange}
               required
               rows={5}
-              className="w-full px-3 py-2 border border-gray-400 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-900 placeholder:text-slate-500 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-300 resize-none"
               placeholder="Your message..."
             />
           </div>
@@ -163,16 +163,16 @@ export default function ContactPage() {
         </div>
 
         {/* Alternative Contact Info */}
-        <div className="mt-6 pt-6 border-t border-gray-300 dark:border-gray-700">
-          <h3 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Other Ways to Reach Me</h3>
-          <div className="text-sm text-gray-900 dark:text-gray-100 space-y-1">
-            <div>📧 Email: <a href="mailto:adilmustafa13@gmail.com" className="text-blue-700 dark:text-blue-300 hover:underline">adilmustafa13@gmail.com</a></div>
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-slate-700">
+          <h3 className="text-sm font-medium mb-2">Other Ways to Reach Me</h3>
+          <div className="text-sm text-slate-700 dark:text-slate-300 space-y-1">
+            <div>📧 Email: <a href="mailto:adilmustafa13@gmail.com" className="text-blue-700 hover:underline dark:text-blue-300">adilmustafa13@gmail.com</a></div>
             <div>📱 Phone: +92 303 5103015</div>
-            <div>💼 LinkedIn: <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-700 dark:text-blue-300 hover:underline">adil-mustafa1325</a></div>
+            <div>💼 LinkedIn: <a href="https://linkedin.com/in/adil-mustafa1325" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline dark:text-blue-300">adil-mustafa1325</a></div>
           </div>
         </div>
 
-        <Link href="/" className="block mt-6 text-blue-700 dark:text-blue-300 hover:underline text-center">
+        <Link href="/" className="block mt-6 text-blue-700 hover:underline text-center dark:text-blue-300">
           &larr; Back to Portfolio
         </Link>
       </div>

@@ -103,22 +103,22 @@ export default function WebhookDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
         <div className="text-lg">Loading webhook data...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4">
+    <div className="min-h-screen bg-slate-50 text-slate-900 p-4 dark:bg-slate-950 dark:text-slate-100">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">Webhook Dashboard</h1>
-          <p className="text-gray-900 dark:text-gray-200">
+          <h1 className="text-3xl font-bold mb-2">Webhook Dashboard</h1>
+          <p className="text-slate-700 dark:text-slate-300">
             Monitor webhook events and manage subscriptions
           </p>
-          <Link href="/" className="text-blue-700 dark:text-blue-300 hover:underline">
+          <Link href="/" className="text-blue-700 hover:underline dark:text-blue-300">
             &larr; Back to Portfolio
           </Link>
         </div>
@@ -149,16 +149,16 @@ export default function WebhookDashboard() {
 
         {/* Events Tab */}
         {activeTab === 'events' && (
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-300 dark:border-gray-700">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Webhook Events</h2>
-              <p className="text-sm text-gray-900 dark:text-gray-200">
+          <div className="bg-white dark:bg-slate-900 rounded-lg shadow overflow-hidden border border-slate-200 dark:border-slate-700">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold">Webhook Events</h2>
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Recent webhook events and their delivery status
               </p>
             </div>
             
             {events.length === 0 ? (
-              <div className="p-8 text-center text-gray-700 dark:text-gray-200">
+              <div className="p-8 text-center text-slate-600 dark:text-slate-300">
                 No webhook events found. Try submitting the contact form to trigger some events!
               </div>
             ) : (
@@ -188,7 +188,7 @@ export default function WebhookDashboard() {
                       <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                         <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
                           <div className="text-sm font-medium">{event.eventType}</div>
-                          <div className="text-xs text-gray-700 dark:text-gray-200">
+                          <div className="text-xs text-slate-600 dark:text-slate-300">
                             ID: {event.id}
                           </div>
                         </td>
@@ -197,14 +197,17 @@ export default function WebhookDashboard() {
                             {event.status}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
-                          {event.subscriptionId}
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm">{event.subscription?.name || 'N/A'}</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-300">
+                            {event.subscription?.url || 'N/A'}
+                          </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
                           {formatTimestamp(event.createdAt)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
-                          {event.retryCount}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
+                          {event.retryCount}/{event.maxRetries}
                         </td>
                       </tr>
                     ))}
@@ -217,16 +220,16 @@ export default function WebhookDashboard() {
 
         {/* Subscriptions Tab */}
         {activeTab === 'subscriptions' && (
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-300 dark:border-gray-700">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Webhook Subscriptions</h2>
-              <p className="text-sm text-gray-900 dark:text-gray-200">
+          <div className="bg-white dark:bg-slate-900 rounded-lg shadow overflow-hidden border border-slate-200 dark:border-slate-700">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold">Webhook Subscriptions</h2>
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Manage webhook endpoints and event subscriptions
               </p>
             </div>
             
             {subscriptions.length === 0 ? (
-              <div className="p-8 text-center text-gray-700 dark:text-gray-200">
+              <div className="p-8 text-center text-slate-600 dark:text-slate-300">
                 No webhook subscriptions found. Create one to start receiving webhook events!
               </div>
             ) : (
@@ -283,7 +286,7 @@ export default function WebhookDashboard() {
                             {subscription.isActive ? 'Active' : 'Inactive'}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300">
                           {formatTimestamp(subscription.createdAt)}
                         </td>
                       </tr>

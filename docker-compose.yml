@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   # Next.js web application (temporarily disabled)
   # web:
