@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "conc \"next dev\" \"yarn run codegen:watch\"",
+    "dev": "node server.js",
+    "dev:next": "conc \"next dev\" \"yarn run codegen:watch\"",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
+    "start:next": "next start",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:watch": "graphql-codegen --config codegen.ts --watch"
@@ -36,6 +38,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.51.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "uuid": "^11.1.0",
     "zod": "^3.23.8"
   },
