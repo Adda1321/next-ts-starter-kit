@@ -1,18 +1,19 @@
-import type { CodegenConfig } from '@graphql-codegen/cli';
-
-const config: CodegenConfig = {
-  schema: 'src/graphql/v1/**/*.ts',
-  documents: ['src/**/*.tsx', 'src/**/*.ts'],
+const config = {
+  overwrite: true,
+  schema: 'http://localhost:3000/api/v1/graphql',
+  headers: {
+    origin: '*',
+  },
+  documents: ['app/**/*.tsx', 'app/**/*.ts', 'src/**/*.tsx', 'src/**/*.ts'],
   generates: {
-    './src/gql/': {
+    'src/gql/': {
       preset: 'client',
       plugins: [],
-      presetConfig: {
-        gqlTagName: 'gql',
-      },
     },
+    // './graphql.schema.json': {
+    //   plugins: ['introspection'],
+    // },
   },
-  ignoreNoDocuments: true,
 };
 
-export default config; 
+export default config;

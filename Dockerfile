@@ -19,6 +19,9 @@ ENV PORT=3000
 # Copy the appropriate environment file (handled by Docker Compose env_file)
 COPY .env.${APP_MODE:-development} ./.env
 
+# # Generate GraphQL types
+# RUN npm run codegen
+
 # Expose the app port
 EXPOSE 3000
 

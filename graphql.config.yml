@@ -1,0 +1,9 @@
+schema: schema.graphql
+documents: 'graphql/**/types/**/*.graphql'
+extensions:
+  endpoints:
+    local:
+      url: http://localhost:3000/api/v1/graphql
+      headers:
+        Content-Type: application/json
+        Origin: http://localhost:3000

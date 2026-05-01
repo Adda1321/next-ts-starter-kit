@@ -13,3 +13,5 @@ Auth0
 
 -----------------------------------------------------
 1. separate postgres db in docker so that i can use my local instead of 
+1. WHAT is Code Gen ?
+2. .env.local vs .env.dev all envs in next js 
